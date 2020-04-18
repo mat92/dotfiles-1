@@ -19,14 +19,17 @@
 	status = auto
 	branch = auto
 
+[merge]
+    tool = vscode
+
+[mergetool "vscode"]
+    cmd = code --wait $MERGED
+
 [diff]
-    tool = icdiff
-
-[difftool]
-    prompt = false
-
-[difftool "icdiff"]
-    cmd = /usr/local/bin/icdiff --line-numbers $LOCAL $REMOTE
+    tool = vscode
+    
+[difftool "vscode"]
+    cmd = code --wait --diff $LOCAL $REMOTE
 
 [filter "lfs"]
 	clean = git-lfs clean %f
@@ -43,7 +46,6 @@
 	enabled = true
 
 [include]
-	path = ~/.gitconfig.private
 	path = ~/.gitconfig.work
 [init]
 	templatedir = ~/.git-templates
